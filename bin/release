@@ -3,7 +3,7 @@
 
 cat <<EOF
 ---
+addons: []
 default_process_types:
-  web: sh boot.sh
+  web: heroku-php-apache2
 EOF
-

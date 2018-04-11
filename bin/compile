@@ -206,24 +206,24 @@ else
 	fi
 	error <<-EOF
 		Failed to install system packages.
-
+		
 		Your platform requirements (for runtimes and extensions) could
 		not be resolved to an installable set of dependencies, or a
 		repository was unreachable.
-
+		
 		Full error information from installation attempt:
-
+		
 		$install_log
-
+		
 		Please verify that all requirements for runtime versions in
 		'$COMPOSER_LOCK' are compatible with the list below, and ensure
 		all required extensions are available for the desired runtimes.
-
+		
 		For reference, the following runtimes are currently available:
-
+		
 		PHP:  $(composer show -d "$build_dir/.heroku/php" --available heroku-sys/php 2>&1 | sed -n 's/^versions : //p' | fold -s -w 58 || true)
 		HHVM: $(composer show -d "$build_dir/.heroku/php" --available heroku-sys/hhvm 2>&1 | sed -n 's/^versions : //p' | fold -s -w 58 || true)
-
+		
 		For a list of supported runtimes & extensions on Heroku, please
 		refer to: https://devcenter.heroku.com/articles/php-support
 	EOF
@@ -301,7 +301,7 @@ if [[ -f "$composer_vendordir/autoload.php" && -d "$composer_vendordir/composer"
 	composer_warn_bindir=""
 	if [[ ! "$composer_bindir/" == "$composer_vendordir"/* && -d "$composer_bindir" ]]; then
 		composer_warn_bindir=$(cat <<-EOF
-
+			
 			Your Composer bin dir is configured to reside outside of vendor
 			dir, so please repeat the two steps above for '$composer_bindir/'.
 		EOF
